@@ -6,9 +6,8 @@ package akka
 
 import akka.TestExtras.Filter.Keys._
 import com.typesafe.sbt.MultiJvmPlugin.MultiJvmKeys.multiJvmCreateLogger
-import com.typesafe.sbt.{SbtMultiJvm, SbtScalariform}
+import com.typesafe.sbt.{SbtMultiJvm}
 import com.typesafe.sbt.SbtMultiJvm.MultiJvmKeys._
-import com.typesafe.sbt.SbtScalariform.ScalariformKeys
 import sbt._
 import sbt.Keys._
 
@@ -56,10 +55,9 @@ object MultiNode extends AutoPlugin {
 
   private val multiJvmSettings =
     SbtMultiJvm.multiJvmSettings ++
-      inConfig(MultiJvm)(SbtScalariform.configScalariformSettings) ++
       Seq(
         jvmOptions in MultiJvm := defaultMultiJvmOptions,
-        compileInputs in (MultiJvm, compile) := ((compileInputs in (MultiJvm, compile)) dependsOn (ScalariformKeys.format in MultiJvm)).value,
+        compileInputs in (MultiJvm, compile) := ((compileInputs in (MultiJvm, compile))).value,
         scalacOptions in MultiJvm := (scalacOptions in Test).value,
         compile in MultiJvm := ((compile in MultiJvm) triggeredBy (compile in Test)).value,
         logLevel in multiJvmCreateLogger := Level.Debug, //  to see ssh establishment

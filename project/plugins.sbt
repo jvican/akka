@@ -8,7 +8,6 @@ libraryDependencies += "org.kohsuke" % "github-api" % "1.68"
 addSbtPlugin("com.typesafe.sbt" % "sbt-multi-jvm" % "0.4.0")
 //#sbt-multi-jvm
 
-addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.1")
 addSbtPlugin("com.typesafe.sbt" % "sbt-osgi" % "0.9.3")
 addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.2.0")
 addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0-M1")
